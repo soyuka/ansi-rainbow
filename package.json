@@ -1,0 +1,20 @@
+{
+  "name": "ansi-rainbow",
+  "version": "0.0.1",
+  "description": "Ainsi rainbowify",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "chalk",
+    "rainbow",
+    "ansi",
+    "colors"
+  ],
+  "author": "soyuka",
+  "license": "WTFPL",
+  "dependencies": {
+    "ansi-styles": "~1.0.0"
+  }
+}
