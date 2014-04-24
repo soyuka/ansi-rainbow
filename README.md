@@ -17,3 +17,4 @@ console.log(rainbow("I am in the pony world"))
 
 ```
 
+![pony pony](http://www.zupmage.eu/i/hLhbow7WHN.png)
