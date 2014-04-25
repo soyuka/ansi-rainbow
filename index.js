@@ -29,8 +29,10 @@ var nextColor = function(s) {
 	return s
 }
 
-module.exports = function (input) {
-	var l = input.length, output = ''
+module.exports = function () {
+
+	var input = [].slice.call(arguments).join(' ')
+	  , l = input.length, output = ''
 
 	for (var i = 0; i < l; i++) {
 		output += nextColor(input.charAt(i))	
