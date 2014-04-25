@@ -14,6 +14,8 @@ Rainbowify string with https://github.com/sindresorhus/ansi-styles
 var rainbow = require('ansi-rainbow')
 
 console.log(rainbow("I am in the pony world"))
+//or
+console.log(rainbow("I", "am", "in", "the", "pony", "world"))
 
 ```
 
