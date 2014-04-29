@@ -3,7 +3,8 @@ var ansi = require('ansi-styles');
 /**
  * black, white and gray are not included
  */
-var colors = [
+var Pony = function() {
+	this._colors = [
 				'red',
 				'green',
 				'yellow',
@@ -11,34 +12,63 @@ var colors = [
 				'magenta',
 				'cyan',
 			]
-  , colors_num = colors.length - 1
-  , next = 0, prev = 0
+	this._colors_num = this._colors.length - 1
+	this._next = 0
+	this._prev = 0
 
-var nextColor = function(s) {
-	if(s != ' ') { 
-		if(prev == colors_num) {
-			prev = 0, next = 1
-			s = ansi[colors[0]].open + s + ansi[colors[0]].close
-		} else {
-			s = ansi[colors[next]].open + s + ansi[colors[next]].close
-			next++
-			prev++
+	return this
+}
+
+Pony.prototype = {
+	bgify: function(color) {
+		return 'bg'+color.charAt(0).toUpperCase()+color.slice(1)
+	},
+  //wrapper to pass bg
+  ponyfy: function(bg) {
+    var self = this
+    bg = bg ? bg : false
+    return function() {
+      return self.output([].slice.call(arguments).join(' '), bg)
+    }
+  },
+	nextColor: function(s, bg) {
+		if(s != ' ') { 
+			var color
+
+			if(this._prev == this._colors_num) {
+				this._prev = 0, this._next = 1
+
+				color = bg ? this.bgify(this._colors[0]) : this._colors[0] 
+
+				s = ansi[color].open + s + ansi[color].close
+			} else {
+
+				color = bg ? this.bgify(this._colors[this._next]) : this._colors[this._next] 
+				
+        s = ansi[color].open + s + ansi[color].close
+				
+        this._next++
+				this._prev++
+			}
 		}
-	}
 
-	return s
+		return s
+	},
+	output: function(input, bg) {
+		var l = input.length, output = '', i = 0
+
+		for (i; i < l; i++) {
+			output += this.nextColor(input.charAt(i), bg)	
+		}
+
+		//reset state
+		this._next = 0, this._prev = 0
+
+		return output
+	}
 }
 
-module.exports = function () {
+var pony = new Pony()
 
-	var input = [].slice.call(arguments).join(' ')
-	  , l = input.length, output = ''
-
-	for (var i = 0; i < l; i++) {
-		output += nextColor(input.charAt(i))	
-	}
-	
-	next = 0, prev = 0
-
-	return output
-}
+module.exports = pony.ponyfy()
+module.exports.bg = pony.ponyfy(true)
