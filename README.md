@@ -43,7 +43,7 @@ rainbow
 	.add('black', 'white')
 	.reset() //we do not want black and white anymore - note it does not reset options only colors
 	.skip(rainbow._backgrounds) //skips backgrounds
-	.add('bgBlue bgMagenta bgCyan')
+	.add('bgBlue bgMagenta bgCyan') //this will keep order when rainbowified
 	.options({color_space: true, gap: 3}) //this will force color spaces and change color every 3 characters
 
 	console.log(rainbow.bg('         '))
