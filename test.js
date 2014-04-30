@@ -55,4 +55,18 @@ describe('PONY', function() {
 		console.log(rainbow.bg('         '))
 	})
 
-})
+	it('should color characters with a 3 gap', function() {
+		rainbow.reset().options({color_space: false})
+
+		console.log(rainbow.r(' testtest    test'))
+		console.log(rainbow.r('Some three caracters gap'))
+	
+		rainbow.options({color_space: true}).reset().skip(rainbow._backgrounds).add('bgBlue bgMagenta bgCyan')
+
+		console.log(rainbow.bg('         '))
+		console.log(rainbow.bg('123456789'))
+		console.log(rainbow.bg('         '))
+
+	})
+
+}) 
