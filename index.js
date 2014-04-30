@@ -131,11 +131,13 @@ Pony.prototype = {
       return self.output([].slice.call(arguments).join(' '), self.colors(bg))
     }
   },
+  isSpace: function(c) {
+    return c == ' ' || c.match('\s')
+  },
+  isNewLine: function(c) {
+    return c == '\n' 
+  },
 	nextColor: function(s, colors) {
-    //not a space
-		if(!this.options.color_space && s == ' ') {
-      return s
-    }
 
 		var l = colors.length  - 1
 
@@ -158,10 +160,6 @@ Pony.prototype = {
   currentColor: function(s, colors) {
     var l = colors.length  - 1
 
-    if(!this.options.color_space && s == ' ') {
-      return s
-    }
-
     this._current_gap++
 
     if(this._prev >= l) {
@@ -178,7 +176,13 @@ Pony.prototype = {
 		
     for (i; i < l; i++) {
       this._current_gap = this._current_gap > gap ? 1 : this._current_gap
-		  output += this._current_gap == gap ? this.nextColor(input.charAt(i), colors) : this.currentColor(input.charAt(i), colors)
+      s = input.charAt(i)
+
+      if(!this.options.color_space && this.isSpace(s) || this.isNewLine(s)) {
+        output += s
+      } else {
+        output += this._current_gap == gap ? this.nextColor(s, colors) : this.currentColor(s, colors)
+      }
 		}
 
 		//reset state

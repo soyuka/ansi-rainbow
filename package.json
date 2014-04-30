@@ -1,11 +1,11 @@
 {
   "name": "ansi-rainbow",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Ainsi rainbowify",
   "main": "index.js",
   "repository": "https://github.com/soyuka/ansi-rainbow",
   "scripts": {
-    "test": "mocha test.js --reporter spec"
+    "test": "mocha --reporter spec"
   },
   "keywords": [
     "chalk",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "chai": "~1.9.1",
     "mocha": "~1.18.2",
-    "chalk": "~0.4.0"
+    "chalk": "~0.4.0",
+    "through2": "^0.4.1"
   }
 }
