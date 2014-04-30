@@ -1,6 +1,6 @@
 {
   "name": "ansi-rainbow",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Ainsi rainbowify",
   "main": "index.js",
   "repository": "https://github.com/soyuka/ansi-rainbow",
