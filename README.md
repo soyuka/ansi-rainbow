@@ -24,7 +24,7 @@ console.log(rainbow.bg("I am a background in the pony world"))
 
 That outputs:
 
-![pony pony](https://github.com/soyuka/ansi-rainbow/blob/screen/ksh1.png)
+![pony pony](https://raw.githubusercontent.com/soyuka/ansi-rainbow/master/screen/ksh1.png)
 
 # Features
 
@@ -54,7 +54,7 @@ rainbow
 
 That outputs:
 
-![pony pony](https://github.com/soyuka/ansi-rainbow/blob/screen/ksh2.png)
+![pony pony](https://raw.githubusercontent.com/soyuka/ansi-rainbow/master/screen/ksh2.png)
 
 # API
 
