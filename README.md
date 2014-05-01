@@ -2,7 +2,7 @@ ansi-rainbow
 =============
 
 Rainbowify string with https://github.com/sindresorhus/ansi-styles 
-
+![rainicorn](http://www.zupmage.eu/i/W8xC5EsoJb.jpg)
 # Install
 
 `npm install ansi-rainbow`
