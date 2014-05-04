@@ -44,7 +44,7 @@ describe('PONY', function() {
 		expect(rainbow.add(rainbow._colors).skip('black white').colors()).to.have.members(colors)
 	})
 
-	it('should skip background colors order', function() {
+	it('should keep background colors order', function() {
 		rainbow.skip(rainbow._backgrounds).add('bgGreen bgYellow bgRed')
 		console.log(chalk.bold.black(rainbow.bg('Chuck norris is born in the pony world')))
 	})
@@ -66,6 +66,13 @@ describe('PONY', function() {
 		console.log(rainbow.bg('         '))
 		console.log(rainbow.bg('123456789'))
 		console.log(rainbow.bg('         '))
+
+	})
+
+	it('should color spaces with a blue bg', function() {
+		rainbow.reset().options({gap: 1, color_space: true, space_color: 'bgBlue'}).skip('bgBlue')
+
+		console.log(rainbow.bg('text  with  some  space'))
 
 	})
 

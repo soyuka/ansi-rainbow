@@ -29,7 +29,7 @@ var Pony = function() {
 	this._next = 0
 	this._prev = -1
 
-  this.options = {color_space: false, gap: 1}
+  this.options = {color_space: false, gap: 1, space_color: null}
 
   var self = this
 
@@ -131,12 +131,6 @@ Pony.prototype = {
       return self.output([].slice.call(arguments).join(' '), self.colors(bg))
     }
   },
-  isSpace: function(c) {
-    return c == ' ' || c.match('\s')
-  },
-  isNewLine: function(c) {
-    return c == '\n' 
-  },
 	nextColor: function(s, colors) {
 
 		var l = colors.length  - 1
@@ -169,19 +163,31 @@ Pony.prototype = {
     }
 
   },
+  colorSpace: function(s, color) {
+    if(!this.allowed(color))
+      throw new Error('Color '+ colors[l] +' is not recognized')
+
+    return ansi[color].open + s + ansi[color].close
+  },
 	output: function(input, colors) {
 		var l = input.length, output = '', i = 0, gap = this.options.gap, s
 
-    this._current_gap = 1
+    this._current_gap = gap
 		
     for (i; i < l; i++) {
-      this._current_gap = this._current_gap > gap ? 1 : this._current_gap
+      this._current_gap = this._current_gap > gap ? gap : this._current_gap
       s = input.charAt(i)
 
-      if(!this.options.color_space && this.isSpace(s) || this.isNewLine(s)) {
+      if(s == '\n') {
+        output += s
+      } else if(s == ' ' && !this.options.color_space) {
         output += s
       } else {
-        output += this._current_gap == gap ? this.nextColor(s, colors) : this.currentColor(s, colors)
+
+        if(s == ' ' && this.options.space_color != null)
+          output += this.colorSpace(s, this.options.space_color)
+        else
+          output += this._current_gap == gap ? this.nextColor(s, colors) : this.currentColor(s, colors)
       }
 		}
 
