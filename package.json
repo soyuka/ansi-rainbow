@@ -1,7 +1,7 @@
 {
   "name": "ansi-rainbow",
-  "version": "0.0.7",
-  "description": "Ainsi rainbowify",
+  "version": "0.0.8",
+  "description": "One of the most advanced ansi string rainbow stylizer tool",
   "main": "index.js",
   "repository": "https://github.com/soyuka/ansi-rainbow",
   "scripts": {
