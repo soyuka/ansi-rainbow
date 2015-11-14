@@ -14,6 +14,6 @@ var transform = through(function (chunk, enc, callback) {
 
    })
 
-fs.createReadStream('./ascii.txt')
+fs.createReadStream(__dirname + '/ascii.txt')
 	.pipe(transform)
 	.pipe(process.stdout)
