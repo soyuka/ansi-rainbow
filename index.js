@@ -4,16 +4,16 @@ var ansi = require('ansi-styles')
  * black, white and gray (buggy?) are not included
  */
 var Pony = function() {
-	this._colors = [
+  this._colors = [
     'red',
-		'green',
+    'green',
     'yellow',
-		'blue',
-		'magenta',
-		'cyan',
+    'blue',
+    'magenta',
+    'cyan',
     'white',
     'black'
-	]
+  ]
 
   this._colors_num = this._colors.length
 
@@ -26,8 +26,8 @@ var Pony = function() {
   this._skip = ['black', 'white', 'bgBlack', 'bgWhite']
   this._skip_num = this._skip.length - 1
 
-	this._next = 0
-	this._prev = -1
+  this._next = 0
+  this._prev = -1
 
   this.options = {color_space: false, gap: 1, space_color: null}
 
@@ -131,26 +131,24 @@ Pony.prototype = {
       return self.output([].slice.call(arguments).join(' '), self.colors(bg))
     }
   },
-	nextColor: function(s, colors) {
+  nextColor: function(s, colors) {
+    var l = colors.length  - 1
 
-		var l = colors.length  - 1
+    if(this._prev >= l) {
+      this._prev = 0, this._next = 1
 
-		if(this._prev >= l) {
-			this._prev = 0, this._next = 1
-
-			s = ansi[colors[0]].open + s + ansi[colors[0]].close
-		} else {
-
+      s = ansi[colors[0]].open + s + ansi[colors[0]].close
+    } else {
       s = ansi[colors[this._next]].open + s + ansi[colors[this._next]].close
-			
+
       this._next++
-			this._prev++
-		}
+      this._prev++
+    }
 
     this._current_gap++
 
-		return s
-	}, 
+    return s
+  }, 
   currentColor: function(s, colors) {
     var l = colors.length  - 1
 
@@ -169,13 +167,13 @@ Pony.prototype = {
 
     return ansi[color].open + s + ansi[color].close
   },
-	output: function(input, colors) {
-		var l = input.length, output = '', i = 0, gap = this.options.gap, s
+  output: function(input, colors) {
+    var l = input.length, output = '', i = 0, gap = this.options.gap, s
 
-    this._current_gap = gap
-		
+    this._current_gap = 1
+    
     for (i; i < l; i++) {
-      this._current_gap = this._current_gap > gap ? gap : this._current_gap
+      this._current_gap = this._current_gap > gap ? 1 : this._current_gap
       s = input.charAt(i)
 
       if(s == '\n') {
@@ -189,13 +187,13 @@ Pony.prototype = {
         else
           output += this._current_gap == gap ? this.nextColor(s, colors) : this.currentColor(s, colors)
       }
-		}
+    }
 
-		//reset state
-		this._next = 0, this._prev = -1
+    //reset state
+    this._next = 0, this._prev = -1
 
-		return output
-	}
+    return output
+  }
 }
 
 module.exports = new Pony()
