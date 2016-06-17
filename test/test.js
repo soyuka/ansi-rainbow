@@ -50,18 +50,18 @@ describe('PONY', function() {
 	})
 
 	it("should color spaces with 3 gap - it's a flag \\o/", function() {
-		rainbow.options({color_space: true, gap: 3})
+		rainbow.options({colorSpace: true, gap: 3})
 		console.log(rainbow.bg('         '))
 		console.log(rainbow.bg('         '))
 	})
 
 	it('should color characters with a 3 gap', function() {
-		rainbow.reset().options({color_space: false})
+		rainbow.reset().options({colorSpace: false})
 
 		console.log(rainbow.r(' testtest    test'))
 		console.log(rainbow.r('Some three caracters gap'))
 	
-		rainbow.options({color_space: true}).reset().skip(rainbow._backgrounds).add('bgBlue bgMagenta bgCyan')
+		rainbow.options({colorSpace: true}).reset().skip(rainbow._backgrounds).add('bgBlue bgMagenta bgCyan')
 
 		console.log(rainbow.bg('         '))
 		console.log(rainbow.bg('123456789'))
@@ -70,7 +70,7 @@ describe('PONY', function() {
 	})
 
 	it('should color spaces with a blue bg', function() {
-		rainbow.reset().options({gap: 1, color_space: true, space_color: 'bgBlue'}).skip('bgBlue')
+		rainbow.reset().options({gap: 1, colorSpace: true, spaceColor: 'bgBlue'}).skip('bgBlue')
 
 		console.log(rainbow.bg('text  with  some  space'))
 

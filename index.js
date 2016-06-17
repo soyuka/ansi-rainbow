@@ -29,7 +29,7 @@ var Pony = function() {
   this._next = 0
   this._prev = -1
 
-  this.options = {color_space: false, gap: 1, space_color: null}
+  this.options = {colorSpace: false, gap: 1, spaceColor: null}
 
   var self = this
 
@@ -161,7 +161,7 @@ Pony.prototype = {
     }
 
   },
-  colorSpace: function(s, color) {
+  colSpaces: function(s, color) {
     if(!this.allowed(color))
       throw new Error('Color '+ colors[l] +' is not recognized')
 
@@ -178,12 +178,12 @@ Pony.prototype = {
 
       if(s == '\n') {
         output += s
-      } else if(s == ' ' && !this.options.color_space) {
+      } else if(s == ' ' && !this.options.colorSpace) {
         output += s
       } else {
 
-        if(s == ' ' && this.options.space_color != null)
-          output += this.colorSpace(s, this.options.space_color)
+        if(s == ' ' && this.options.spaceColor != null)
+          output += this.colSpaces(s, this.options.spaceColor)
         else
           output += this._current_gap == gap ? this.nextColor(s, colors) : this.currentColor(s, colors)
       }
