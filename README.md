@@ -44,7 +44,7 @@ rainbow
 	.reset() //we do not want black and white anymore - note it does not reset options only colors
 	.skip(rainbow._backgrounds) //skips backgrounds
 	.add('bgBlue bgMagenta bgCyan') //this will keep order when rainbowified
-	.options({color_space: true, gap: 3}) //this will force color spaces and change color every 3 characters
+	.options({colorSpace: true, gap: 3}) //this will force color spaces and change color every 3 characters
 
 	console.log(rainbow.bg('         '))
 	console.log(rainbow.bg('123456789'))
@@ -63,7 +63,7 @@ That outputs:
 - add(colors)         do not skip colors         
 - skip(colors)        skip colors         
 - reset()             reset colors (skips ['black', 'white', 'bgBlack', 'bgWhite'])         
-- options({})         set options - options are (bool) color_space, (int) gap
+- options({})         set options - options are (bool) colorSpace, (int) gap
 
 # TODO
 
