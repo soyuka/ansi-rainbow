@@ -13,6 +13,9 @@
     "ansi",
     "colors"
   ],
+  "engines": {
+    "node": ">6.0"
+  },
   "author": "soyuka",
   "license": "WTFPL",
   "dependencies": {

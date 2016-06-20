@@ -1,7 +1,7 @@
 ansi-rainbow
 =============
 
-Rainbowify string with https://github.com/sindresorhus/ansi-styles 
+Rainbowify string with https://github.com/sindresorhus/ansi-styles
 ![rainicorn](http://www.zupmage.eu/i/W8xC5EsoJb.jpg)
 # Install
 
@@ -58,12 +58,15 @@ That outputs:
 
 # API
 
-- r(string)           rainbowify         
-- bg(string)          background-rainbowify         
-- add(colors)         do not skip colors         
-- skip(colors)        skip colors         
-- reset()             reset colors (skips ['black', 'white', 'bgBlack', 'bgWhite'])         
-- options({})         set options - options are (bool) color_space, (int) gap
+- r(string)           rainbowify
+- bg(string)          background-rainbowify
+- add(colors)         do not skip colors
+- skip(colors)        skip colors
+- reset()             reset colors (skips ['black', 'white', 'bgBlack', 'bgWhite'])
+- options({})         set options
+  - (bool) .color_space or .colorSpace - whether to color spaces
+  - (string) .space_color or .spaceColor - space color string
+  - (int) .gap - the gap size between a color change
 
 # TODO
 
